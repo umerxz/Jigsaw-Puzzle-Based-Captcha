@@ -1,0 +1,27 @@
+Firstly, open a terminal in vs code. Install and create a virtual environment:
+	pip install virtualenv  
+	python3 -m venv myvenv 
+ 
+For mac:
+	source myvenv/bin/activate
+
+For windows:
+	Myvenv\Scripts\activate
+
+In your virtual environment install Django, pillow:
+	pip install Django
+	pip install pillow
+	pip install numpy
+	pip3 install psycopg2-binary
+
+After all installations, copy and paste the project folder into the folder where virtual environment is active.
+
+In the terminal change directory to where "populate_imgs.py" is and run this file only to upload the images using the command:
+	python populate_imgs.py
+
+Change directory to the CAPTCHA folder and run the project with:
+	python manage.py runserver
+
+NOTE: The PostgreSQL database settings in settings.py have been commented so it does not have to be installed before the execution. 
+If the project is to be tested without PostgreSQL, there is no need to install it.
+If the project has to be tested with PostgreSQL, then it is recommended to install PostgreSQL. During installation, remember the user, name and password. In settings.py comment lines 77-82, uncomment lines 83-90 and replace the desired pairs.

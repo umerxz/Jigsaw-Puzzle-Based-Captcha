@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="{% static 'js/my_js.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>PUZZLE CAPTCHA INSTRUCTIONS - Drag and Drop the pieces in the square grid to solve the puzzle</p>
+    <div class="game-box">
+        <div class="puzzle-pieces">
+            {% for piece in pieces %}
+                <div class="puzzle-box" id="div{{piece.position}}" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img draggable="true" ondragstart="drag(event)" id="drag{{piece.position}}" src="data:image/png;base64,{{ piece.sliced_img }}" alt="Image">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="controls-target-wrapper">
+            <div class="controls">
+                <div class="timer" id="time-left">Time Left: <span id="timer">45</span></div>
+                <button id="hintButton" data-img-url="data:image/png;base64,{{ org_img.img }}">Show Hint</button>
+                <div id="hintImageContainer" style="display:none;"></div>
+            </div>
+            <div class="target-puzzle">
+                <table>
+                    <tr>
+                        <td><div id="div10" data-correct-piece="drag1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td><div id="div11" data-correct-piece="drag2" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td><div id="div12" data-correct-piece="drag3" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div id="div13" data-correct-piece="drag4" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td><div id="div14" data-correct-piece="drag5" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td><div id="div15" data-correct-piece="drag6" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div id="div16" data-correct-piece="drag7" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td><div id="div17" data-correct-piece="drag8" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                        <td><div id="div18" data-correct-piece="drag9" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
